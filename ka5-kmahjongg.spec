@@ -1,19 +1,34 @@
-%define		kdeappsver	18.04.0
-%define		qtver		5.3.2
+%define		kdeappsver	18.12.1
+%define		qtver		5.9.0
 %define		kaname		kmahjongg
 Summary:	kmahjongg
 Name:		ka5-%{kaname}
-Version:	18.04.0
+Version:	18.12.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications/Games
 Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	dc0102bc960dda9eb49b48ba3608c27a
+# Source0-md5:	ba73372fa992a52e4a2887feba26bfd3
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
+BuildRequires:	Qt5Gui-devel
+BuildRequires:	Qt5Svg-devel
+BuildRequires:	Qt5Widgets-devel >= 5.8.0
 BuildRequires:	cmake >= 2.8.12
+BuildRequires:	gettext-devel
+BuildRequires:	ka5-libkdegames-devel >= %{kdeappsver}
 BuildRequires:	ka5-libkmahjongg-devel
-BuildRequires:	kf5-extra-cmake-modules >= 1.4.0
+BuildRequires:	kf5-extra-cmake-modules >= 5.53.0
+BuildRequires:	kf5-kconfig-devel >= 5.30.0
+BuildRequires:	kf5-kcoreaddons-devel >= 5.30.0
+BuildRequires:	kf5-kcrash-devel >= 5.30.0
+BuildRequires:	kf5-kdbusaddons-devel >= 5.30.0
+BuildRequires:	kf5-kdeclarative-devel >= 5.30.0
+BuildRequires:	kf5-kdoctools-devel >= 5.30.0
+BuildRequires:	kf5-knewstuff-devel >= 5.30.0
+BuildRequires:	kf5-kxmlgui-devel >= 5.30.0
+BuildRequires:	ninja
+BuildRequires:	python
 BuildRequires:	qt5-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
@@ -22,7 +37,9 @@ BuildRequires:	xz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Kmahjongg.
+In KMahjongg the tiles are scrambled and staked on top of each other
+to resemble a certain shape. The player is then expected to remove all
+the tiles off the game board by locating each tile's matching pair.
 
 %prep
 %setup -q -n %{kaname}-%{version}
@@ -31,20 +48,19 @@ Kmahjongg.
 install -d build
 cd build
 %cmake \
+	-G Ninja \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 	..
-%{__make}
+%ninja_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} -C build install \
-	DESTDIR=$RPM_BUILD_ROOT
+%ninja_install -C build
 
 %find_lang %{kaname} --all-name --with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
