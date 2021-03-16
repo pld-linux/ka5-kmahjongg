@@ -1,15 +1,15 @@
-%define		kdeappsver	19.04.1
+%define		kdeappsver	20.12.3
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kmahjongg
 Summary:	kmahjongg
 Name:		ka5-%{kaname}
-Version:	19.04.1
+Version:	20.12.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications/Games
-Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	1f8c22ad76118efb9310be571378e7d1
+Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	4d64d9abf8555f3dbc00456f4b1f1784
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel
@@ -68,7 +68,6 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kmahjongg
-/etc/xdg/kmahjongg.categories
 %{_desktopdir}/org.kde.kmahjongg.desktop
 %{_datadir}/config.kcfg/kmahjongg.kcfg
 %{_iconsdir}/hicolor/128x128/apps/kmahjongg.png
@@ -81,3 +80,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kmahjongg
 %{_datadir}/kxmlgui5/kmahjongg
 %{_datadir}/metainfo/org.kde.kmahjongg.appdata.xml
+%{_datadir}/qlogging-categories5/kmahjongg.categories
