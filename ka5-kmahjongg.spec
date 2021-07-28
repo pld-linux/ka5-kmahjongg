@@ -42,6 +42,11 @@ In KMahjongg the tiles are scrambled and staked on top of each other
 to resemble a certain shape. The player is then expected to remove all
 the tiles off the game board by locating each tile's matching pair.
 
+%description -l pl.UTF-8
+W KMahjonggu kafelki są wymieszane i poukładane jeden na drugim tworząc
+pewien kształt. Zadaniem gracza jest zdjąć wszystkie kafelki z planszy
+znajdując pary.
+
 %prep
 %setup -q -n %{kaname}-%{version}
 
