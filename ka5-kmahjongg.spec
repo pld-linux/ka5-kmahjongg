@@ -1,39 +1,39 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	23.08.4
+%define		kdeappsver	24.01.95
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		kmahjongg
 Summary:	kmahjongg
 Name:		ka5-%{kaname}
-Version:	23.08.4
-Release:	1
+Version:	24.01.95
+Release:	0.1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications/Games
-Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	cef38f0d1d7aea8978e89ebbb9d87922
+Source0:	https://download.kde.org/unstable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	4adbb4ff247369022504711578b74ce5
 URL:		http://www.kde.org/
-BuildRequires:	Qt5Core-devel >= %{qtver}
-BuildRequires:	Qt5Gui-devel
-BuildRequires:	Qt5Svg-devel
-BuildRequires:	Qt5Widgets-devel >= 5.8.0
+BuildRequires:	Qt6Core-devel >= %{qtver}
+BuildRequires:	Qt6Gui-devel
+BuildRequires:	Qt6Svg-devel
+BuildRequires:	Qt6Widgets-devel >= 5.8.0
 BuildRequires:	cmake >= 3.20
 BuildRequires:	gettext-devel
 BuildRequires:	ka5-libkdegames-devel >= %{kdeappsver}
 BuildRequires:	ka5-libkmahjongg-devel >= %{kdeappsver}
-BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
-BuildRequires:	kf5-kconfig-devel >= %{kframever}
-BuildRequires:	kf5-kcoreaddons-devel >= %{kframever}
-BuildRequires:	kf5-kcrash-devel >= %{kframever}
-BuildRequires:	kf5-kdbusaddons-devel >= %{kframever}
-BuildRequires:	kf5-kdeclarative-devel >= %{kframever}
-BuildRequires:	kf5-kdoctools-devel >= %{kframever}
-BuildRequires:	kf5-knewstuff-devel >= %{kframever}
-BuildRequires:	kf5-kxmlgui-devel >= %{kframever}
+BuildRequires:	kf6-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf6-kconfig-devel >= %{kframever}
+BuildRequires:	kf6-kcoreaddons-devel >= %{kframever}
+BuildRequires:	kf6-kcrash-devel >= %{kframever}
+BuildRequires:	kf6-kdbusaddons-devel >= %{kframever}
+BuildRequires:	kf6-kdeclarative-devel >= %{kframever}
+BuildRequires:	kf6-kdoctools-devel >= %{kframever}
+BuildRequires:	kf6-knewstuff-devel >= %{kframever}
+BuildRequires:	kf6-kxmlgui-devel >= %{kframever}
 BuildRequires:	ninja
 BuildRequires:	python
-BuildRequires:	qt5-build >= %{qtver}
+BuildRequires:	qt6-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
@@ -82,13 +82,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kmahjongg
 %{_desktopdir}/org.kde.kmahjongg.desktop
 %{_datadir}/config.kcfg/kmahjongg.kcfg
-%{_iconsdir}/hicolor/128x128/apps/kmahjongg.png
-%{_iconsdir}/hicolor/16x16/apps/kmahjongg.png
-%{_iconsdir}/hicolor/22x22/apps/kmahjongg.png
-%{_iconsdir}/hicolor/32x32/apps/kmahjongg.png
-%{_iconsdir}/hicolor/48x48/apps/kmahjongg.png
-%{_iconsdir}/hicolor/64x64/apps/kmahjongg.png
+%{_iconsdir}/hicolor/*x*/apps/kmahjongg.png
 %{_iconsdir}/hicolor/scalable/apps/kmahjongg.svgz
 %{_datadir}/kmahjongg
 %{_datadir}/metainfo/org.kde.kmahjongg.appdata.xml
-%{_datadir}/qlogging-categories5/kmahjongg.categories
+%{_datadir}/qlogging-categories6/kmahjongg.categories
